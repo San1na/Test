@@ -1,1 +1,25 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/San1na/Test/refs/heads/main/VipHop"))()
+
+farming = true  -- Устанавливаем начальное состояние фарминга
+
+while farming do
+    local folder = workspace.__THINGS.BlockWorlds.Blocks_5
+    local targetMeshIds = {
+        "rbxassetid://108190463667826",
+        "rbxassetid://108190463667826",
+        "rbxassetid://110373471085083",
+        "rbxassetid://103544790460474"
+    }
+
+    for _, part in ipairs(folder:GetChildren()) do
+        if part:IsA("MeshPart") then
+            for _, meshId in ipairs(targetMeshIds) do
+                if part.MeshId == meshId then
+                    part:Destroy()
+                    break
+                end
+            end
+        end
+    end
+    task.wait(1) -- Задержка в 1 секунду перед следующим циклом
+end
